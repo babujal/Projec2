@@ -31,10 +31,6 @@ app.use(express.urlencoded({ extended: true }))
 //Setingup the cotrollers to be use with app.use
 app.use('/seafoodstore', seafoodController)
 
-app.get('/', (req, res) => {
-   res.send('Hello world!')
-})
-
 app.listen(PORT, () => {
     console.log(`Server is listening on PORT: ${PORT}`)
 })
