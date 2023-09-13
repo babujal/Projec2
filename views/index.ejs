@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IndexRoute</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <a href="./new" class="newPage">Add a new product</a>
+    <h1>SHOP</h1>
+    <div class="fishesContainer">
+        <% for (let i = 0; i < seaFood.length; i++) { %>
+            <div class="fishContainer">
+                <!-- good for a while loop 3 items by row -->
+            <h3 class="name"><%= seaFood[i].name %></h3>
+                <div class="imgContainer">
+                    <!-- <a href="/store/<%=seaFood[i]._id%>"> -->
+                        <img src="<%= seaFood[i].img %>" alt="">
+                    <!-- </a> -->
+                </div>
+            <h5 class="price">Price: $<%= seaFood[i].price %></h5>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
