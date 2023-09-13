@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Seafood = require('./models/seafood')
 
-const mongoURI = 'mongodb://localhost:27017/seafoodstore'
+const mongoURI = 'mongodb+srv://dercamar1:Nvidiamx4000!@mymongodb.u0g2e6j.mongodb.net/?retryWrites=true&w=majority'
 const db = mongoose.connection
 mongoose.connect(mongoURI)
 

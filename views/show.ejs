@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShowRoute</title>
+    <link rel="stylesheet" href="/css/show.css">
+</head>
+<body>
+    <a href="./">Back to store</a>
+    <h1><%= seaFood.name %></h1>
+    <div class="fishContainer">
+        <img src="<%= seaFood.img %>" alt="">
+        <p class="description"><%= seaFood.description %></p>
+        <h5>PRICE: $<%= seaFood.price %></h5>
+        <h4 class = qty><%= seaFood.qty %> remaining</h4>
+        <% if (seaFood.qty > 0) { %>
+            <form action="/store/<%= seaFood._id%>/buy" method="post">
+                <button class="buyButton">BUY</button>
+            </form>
+        <% } else { %>
+            <p class="out">OUT OF STOCK</p>
+        <% } %>
+        <a class="editLink" href="./<%=seaFood.id%>/edit">Edit this product</a>
+    </div>
+    <form action="<% seaFood %>?_method=DELETE" method="post">
+        <button type="submit">DELETE</button>
+    </form>
+</body>
+</html>

@@ -7,19 +7,22 @@
     <link rel="stylesheet" href="/css/index.css">
 </head>
 <body>
-    <a href="./new" class="newPage">Add a new product</a>
-    <h1>SHOP</h1>
+    <h1>Captain Barracuda</h1>
     <div class="fishesContainer">
         <% for (let i = 0; i < seaFoods.length; i++) { %>
             <div class="fishContainer">
                 <!-- good for a while loop 3 items by row -->
             <h3 class="name"><%= seaFoods[i].name %></h3>
                 <div class="imgContainer">
-                    <a href="/seafoodstore/<%=seaFoods[i]._id%>">
+                    <a href="/seafoodstore/stock/<%=seaFoods[i]._id%>">
                         <img src="<%= seaFoods[i].img %>" alt="">
                     </a>
                 </div>
-            <h5 class="price">Price: $<%= seaFoods[i].price %></h5>
+                <% if (seaFoods[i].qty > 0) { %>
+                    <h5 class="price">Price: $<%= seaFoods[i].price %></h5>
+                <% } else { %>
+                    <p class="out">OUT OF STOCK</p>
+                <% } %>
             </div>
         <% } %>
     </div>
