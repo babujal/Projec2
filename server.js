@@ -1,11 +1,12 @@
 // IMPORTS
 const express = require('express')
-// const methodOverride = require('method-override')
+const methodOverride = require('method-override')
 const app = express()
+
 
 // MIDDLEWARE
 app.use(express.static('public'))
-// app.use(methodOverride('_method'))
+app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
 //Importing Controllers
 const seafoodController = require('./controllers/seafood.js')
