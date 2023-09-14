@@ -6,6 +6,13 @@ const app = express()
 // MIDDLEWARE
 app.use(express.static('public'))
 // app.use(methodOverride('_method'))
+app.set('view engine', 'ejs')
+//Importing Controllers
+const seafoodController = require('./controllers/seafood.js')
+//MIDLEWRE TO PARSE DATA req.body obj
+app.use(express.urlencoded({ extended: true }))
+//Setingup the cotrollers to be use with app.use
+app.use('/seafoodstore', seafoodController)
 
 require('dotenv').config()
 
@@ -23,13 +30,6 @@ const db = mongoose.connection
 db.on('error', (err) => { console.log('ERROR: ' , err)})
 db.on('connected', () => { console.log('mongo connected')})
 db.on('disconnected', () => { console.log('mongo disconnected')})
-
-//Importing Controllers
-const seafoodController = require('./controllers/seafood.js')
-//MIDLEWRE TO PARSE DATA req.body obj
-app.use(express.urlencoded({ extended: true }))
-//Setingup the cotrollers to be use with app.use
-app.use('/seafoodstore', seafoodController)
 
 app.listen(PORT, () => {
     console.log(`Server is listening on PORT: ${PORT}`)

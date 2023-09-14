@@ -19,7 +19,11 @@
                         <img src="<%= seaFoods[i].img %>" alt="">
                     </a>
                 </div>
-            <h5 class="price">Price: $<%= seaFoods[i].price %></h5>
+                <% if (seaFoods[i].qty > 0) { %>
+                    <h5 class="price">Price: $<%= seaFoods[i].price %></h5>
+                <% } else { %>
+                    <p class="out">OUT OF STOCK</p>
+                <% } %>
             </div>
         <% } %>
     </div>
