@@ -1,5 +1,4 @@
 <%- include('./partials/headerclient.ejs') %>
-    <h1>Captain Barracuda</h1>
     <div class="fishesContainer">
         <% for (let i = 0; i < seaFoods.length; i++) { %>
             <div class="fishContainer">
@@ -18,5 +17,6 @@
             </div>
         <% } %>
     </div>
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>
