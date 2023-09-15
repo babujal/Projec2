@@ -64,7 +64,7 @@ router.get('/:id/edit', async (req, res) => {
 
 //POST ROUTE "Creates"
 router.post('/', async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     // res.send(req.body)
     //--------------------------------------
     try {
@@ -78,12 +78,25 @@ router.post('/', async (req, res) => {
     }
 })
 
+//For the edit route
 router.put('/:id', async (req, res) => {
     try{
         const updatedProduct = await Seafoods.findByIdAndUpdate(req.params.id, req.body, {new: true})
         res.redirect('/seafoodstore/' + updatedProduct._id)
     } catch (err) {
         console.log("ERROR IN EDIT: ", err)
+        res.status(500).send(err)
+    }
+})
+
+//DELETE ROUTE
+router.delete('/:id', async (req, res) => {
+    try{
+        const product = await Seafoods.findByIdAndDelete(req.params.id, {new: true})
+        console.log(`Deleted product: ${product}`)
+        res.redirect('/seafoodstore')
+    } catch (err){
+        console.log("ERROR ON DELETE REQUEST: ", err)
         res.status(500).send(err)
     }
 })
