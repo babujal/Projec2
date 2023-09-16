@@ -1,19 +1,19 @@
 <%- include('./partials/headerclient.ejs') %>
 <div class="container">
-    <div class="row">
+    <div class="row g-3">
     <% for (let i = 0; i < seaFoods.length; i++) { %>
         <div class="col-md-4 col-lg-3">
             <div class="card">
-                <a href="/seafoodstore/<%=seaFoods[i]._id%>">
+                <a href="/seafoodstore/stock/<%=seaFoods[i]._id%>">
                     <img src="<%= seaFoods[i].img %>" alt="Fish Photo" class="card-img-top">
                 </a>
                 <div class="card-body">
-                    <h5 class="name"><%= seaFoods[i].name %></h5>
+                    <h6 class="card-title"><%= seaFoods[i].name %></h6>
                     <h5 class="name">
                         <% if (seaFoods[i].qty > 0) { %>
                             <h5 class="price">Price: $<%= seaFoods[i].price %></h5>
                         <% } else { %>
-                            <p class="out">OUT OF STOCK</p>
+                            <h5 class="out">OUT OF STOCK</h5>
                         <% } %>
                     </h5>
                 </div>

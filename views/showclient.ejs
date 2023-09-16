@@ -1,15 +1,25 @@
 <%- include('./partials/headershowclient.ejs') %>
-    <h1><%= seaFood.name %></h1>
-    <div class="fishContainer">
-        <img src="<%= seaFood.img %>" alt="">
-        <p class="description"><%= seaFood.description %></p>
-        <% if (seaFood.qty > 0) { %>
-            <h4 class = qty><%= seaFood.qty %> lb remaining</h4>
-            <h5 class="price">Price: $<%= seaFood.price %></h5>
-        <% } else { %>
-            <p class="out">OUT OF STOCK</p>
-        <% } %>
+<div class="container">
+    <div class="row g-3">
+        <div class="col-md-6">
+            <img src="<%= seaFood.img %>" alt="Fish Phot" class="card-img-top">
+        </div>
+
+        <div class="col-md-6">
+            <h3 class="title"><%= seaFood.name %></h3>
+            <h4 class="price">Price: $<%= seaFood.price %></h4>
+            <p class="text"><%= seaFood.description %></p>
+            <h4>
+                <% if (seaFood.qty > 0) { %>
+                    <h4 class = qty><%= seaFood.qty %> lb remaining</h4>
+                <% } else { %>
+                    <p class="out">OUT OF STOCK</p>
+                <% } %>
+            </h4>
+
+        </div>
     </div>
+</div>
     <%- include('./partials/footer.ejs') %>
 </body>
 </html>
