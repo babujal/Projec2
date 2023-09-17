@@ -1,28 +1,28 @@
 <%- include('./partials/header.ejs') %>
     <div class="container">
         <div class="row g-3">
-        <% for (let i = 0; i < seaFoods.length; i++) { %>
-            <div class="col-md-4 col-lg-3">
-                <div class="card">
-                    <a href="/seafoodstore/<%=seaFoods[i]._id%>">
-                        <img src="<%= seaFoods[i].img %>" alt="Fish Photo" class="card-img-top">
-                    </a>
-                    <div class="card-body">
-                        <h6 class="text-center"><%= seaFoods[i].name %></h6>
-                        <h5 class="text-center">
-                            <% if (seaFoods[i].qty > 0) { %>
-                                <h5 class="text-center">Price: $<%= seaFoods[i].price %></h5>
-                            <% } else { %>
-                                <h5 class="out">OUT OF STOCK</h5>
-                            <% } %>
-                        </h5>
-                        <a href="/seafoodstore/<%= seaFoods[i]._id %>/edit" class="newPage">
-                            <button type="button" class="btn btn-success">EDIT</button>
-                        </a>
-                    </div>
-                </div>
-            </div>    
-        <% } %>
+            <% for (let i = 0; i < seaFoods.length; i++) { %>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card">
+                            <a href="/seafoodstore/<%=seaFoods[i]._id%>">
+                                <img src="<%= seaFoods[i].img %>" alt="Fish Photo" class="card-img-top">
+                            </a>
+                            <div class="card-body">
+                                <h6 class="text-center"><%= seaFoods[i].name %></h6>
+                                <h5 class="text-center">
+                                <% if (seaFoods[i].aviability === true) { %>
+                                        <h5 class="text-center">Price: $<%= seaFoods[i].price %></h5>
+                                    <% } else { %>
+                                        <h5 class="out">OUT OF STOCK</h5>
+                                    <% } %>
+                                </h5>
+                                <a href="/seafoodstore/<%= seaFoods[i]._id %>/edit" class="newPage">
+                                    <button type="button" class="btn btn-success">EDIT</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>    
+            <% } %>
         </div>
     </div>
     <%- include('./partials/footer.ejs') %>

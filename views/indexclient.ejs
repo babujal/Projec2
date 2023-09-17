@@ -2,6 +2,7 @@
 <div class="container">
     <div class="row g-3">
     <% for (let i = 0; i < seaFoods.length; i++) { %>
+        <% if (seaFoods[i].addToMenu === true) { %>
         <div class="col-md-4 col-lg-3">
             <div class="card">
                 <a href="/seafoodstore/stock/<%=seaFoods[i]._id%>">
@@ -10,7 +11,7 @@
                 <div class="card-body">
                     <h6 class="card-title"><%= seaFoods[i].name %></h6>
                     <h5 class="name">
-                        <% if (seaFoods[i].qty > 0) { %>
+                        <% if (seaFoods[i].aviability === true) { %>
                             <h5 class="price">Price: $<%= seaFoods[i].price %></h5>
                         <% } else { %>
                             <h5 class="out">OUT OF STOCK</h5>
@@ -18,7 +19,8 @@
                     </h5>
                 </div>
             </div>
-        </div>    
+        </div>
+        <% } %>  
     <% } %>
     </div>
 </div>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EditRoute</title>
+</head>
+<body>
+    <h1>Post Products</h1>
+    <form action="/seafoodstore/updatePosts?_method=PUT" method="post">
+        <% for (let i = 0; i < products.length; i++) { %>
+            <h4>Name: <%=products[i].name%></h4>
+            Post:
+                <input type="checkbox" name="products[<%= i %>].addToMenu" <%= products[i].addToMenu ? 'checked' : ''  %> />
+                <br/>
+                <% } %>
+            <input type="submit" name="" value="Submit Changes"/>
+    </form>
+</body>
+</html>

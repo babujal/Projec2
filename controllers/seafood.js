@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 //Requiring the fish model
 const Seafoods = require('../models/seafood.js')
+// const updateController = require('./postRoute.js');
+// router.use('/seafoodstore', updateController)
+
 
 // Render Home Page
 router.get('/seafoodstore/auth', (req, res) => {
@@ -25,6 +28,19 @@ router.get('/stock', async (req, res)=>{
         seaFoods: foundSeafood
     });
 });
+
+//Edit for post menu
+// router.get('/postmenu', async (req, res) => {
+//     try{
+//         const foundSeafood = await Seafoods.find({})
+//         res.render('postmenu.ejs', {
+//             products: foundSeafood
+//         })
+//     }catch (err) {
+//         console.log(err)
+//         res.status(500).send(err)
+//     }
+// })
 
 //NEW ROUTE "creates new product"
 router.get('/new', (req, res) => {
@@ -64,9 +80,11 @@ router.get('/:id/edit', async (req, res) => {
 
 //POST ROUTE "Creates"
 router.post('/', async (req, res) => {
-    // console.log(req.body)
+    console.log(req.body)
     // res.send(req.body)
     //--------------------------------------
+    req.body.aviability === 'on' ? req.body.aviability = true : req.body.aviability = false
+    req.body.addToMenu === 'on' ? req.body.addToMenu = true : req.body.addToMenu = false
     try {
         const createdProduct = await Seafoods.create(req.body)
         // res.send(newFruit)
@@ -78,9 +96,28 @@ router.post('/', async (req, res) => {
     }
 })
 
+// Put route for handleling postmenu
+// router.put('/updatePosts', async (req, res) => {
+//     try {
+//       const productsToUpdate = req.body.products;
+//       console.log(`From put method ${productsToUpdate}`)
+//       for (const product of productsToUpdate) {
+//         const productId = product._id;
+//         const isPosted = product.addToMenu === 'on';
+//         await Seafoods.findByIdAndUpdate(productId, { addToMenu: isPosted });
+//       }
+//       res.redirect('/seafoodstore');
+//     } catch (err) {
+//       console.log(err);
+//       res.status(500).send(err);
+//     }
+//   });
+
 //For the edit route
 router.put('/:id', async (req, res) => {
     try{
+        req.body.aviability === 'on' ? req.body.aviability = true : req.body.aviability = false
+        req.body.addToMenu === 'on' ? req.body.addToMenu = true : req.body.addToMenu = false
         const updatedProduct = await Seafoods.findByIdAndUpdate(req.params.id, req.body, {new: true})
         res.redirect('/seafoodstore/' + updatedProduct._id)
     } catch (err) {
