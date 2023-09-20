@@ -12,3 +12,13 @@ body {
 #bottomBar{
     margin-bottom: 3%;
 }
+
+ul{
+    display: inline;
+    margin-left: 80%;
+}
+
+#butPosition{
+    display: flex;
+    justify-content: space-between;
+}
