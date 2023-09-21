@@ -3,7 +3,7 @@
         <div class="row g-3">
             <% for (let i = 0; i < seaFoods.length; i++) { %>
                 <% if (seaFoods[i].addToMenu === true) { %>
-                    <div class="col-sm-6 md-4 col-lg-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
                         <div class="card text-center h-100">
                             <a href="/seafoodstore/<%=seaFoods[i]._id%>">
                                 <img src="<%= seaFoods[i].img %>" alt="Fish Photo" class="card-img-top">
@@ -34,7 +34,7 @@
             <% } %>
             <% for (let i = 0; i < seaFoods.length; i++) { %>
                 <% if (seaFoods[i].addToMenu === false) { %>
-                    <div class="col-md-4 col-lg-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
                         <div class="card text-center h-100">
                             <a href="/seafoodstore/<%=seaFoods[i]._id%>">
                                 <img src="<%= seaFoods[i].img %>" alt="Fish Photo" class="card-img-top">

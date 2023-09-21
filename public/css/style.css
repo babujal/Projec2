@@ -9,16 +9,34 @@ body {
     flex-direction: column;
 }
 
-#bottomBar{
-    margin-bottom: 3%;
-}
-
 ul{
     display: inline;
-    margin-left: 80%;
+    margin-left: 75%;
+    margin-right: 2rem;
+}
+
+.nav-item {
+    margin-left: 0.5rem;
+}
+
+#port{
+    justify-content: center;
+}
+
+.logo{
+}
+
+#bottomNav{
+    margin-bottom: 3%;
+    box-shadow: 0px 1px 1px #777;
 }
 
 #butPosition{
     display: flex;
     justify-content: space-between;
+}
+
+#links{
+    display: flex;
+
 }
