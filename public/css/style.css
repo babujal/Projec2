@@ -10,10 +10,12 @@ body {
 }
 
 ul{
-    display: inline;
+    display:inline;
     margin-left: 75%;
     margin-right: 2rem;
 }
+
+
 
 .nav-item {
     margin-left: 0.5rem;
