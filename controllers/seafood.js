@@ -7,9 +7,9 @@ const Seafoods = require('../models/seafood.js')
 
 
 // Render Home Page
-router.get('/seafoodstore/auth', (req, res) => {
-    res.render('index.ejs')
-})
+// router.get('/seafoodstore/auth', (req, res) => {
+//     res.render('index.ejs')
+// })
 
 // INDEX ROUTE (OWNER)
 router.get('/', async (req, res)=>{

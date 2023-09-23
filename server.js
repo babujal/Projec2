@@ -19,7 +19,7 @@ app.use(methodOverride('_method'))
 //     })
 // )
   
-app.set('view engine', 'ejs')
+// app.set('view engine', 'ejs')
 //Importing Controllers
 const seafoodController = require('./controllers/seafood.js')
 const userController = require('./controllers/users.js')
