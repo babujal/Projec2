@@ -2,20 +2,33 @@
 const express = require('express')
 const methodOverride = require('method-override')
 const app = express()
+const session = require('express-session')
+const bcrypt = require('bcrypt')
 
+
+require('dotenv').config()
 
 // MIDDLEWARE
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
+// app.use(
+//     session({
+//       secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
+//       resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
+//       saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
+//     })
+// )
+  
 app.set('view engine', 'ejs')
 //Importing Controllers
 const seafoodController = require('./controllers/seafood.js')
+const userController = require('./controllers/users.js')
 //MIDLEWRE TO PARSE DATA req.body obj
 app.use(express.urlencoded({ extended: true }))
-//Setingup the cotrollers to be use with app.use
+// Setingup the cotrollers to be use with app.use
 app.use('/seafoodstore', seafoodController)
+// app.use('/users', userController)
 
-require('dotenv').config()
 
 const PORT = process.env.PORT || 3000
 
