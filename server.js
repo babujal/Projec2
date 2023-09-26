@@ -2,32 +2,37 @@
 const express = require('express')
 const methodOverride = require('method-override')
 const app = express()
-const session = require('express-session')
 const bcrypt = require('bcrypt')
-
-
-require('dotenv').config()
+const session = require('express-session')
 
 // MIDDLEWARE
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
-// app.use(
-//     session({
-//       secret: process.env.SECRET, //a random string do not copy this value or your stuff will get hacked
-//       resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
-//       saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
-//     })
-// )
+app.use(express.json())
+require('dotenv').config()
+app.use(
+    session({
+      secret: 'Testing123', //a random string do not copy this value or your stuff will get hacked
+      resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
+      saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
+    })
+)
+
+// Custom auth middleware
+const isAuthenticated = (req, res, next) => {
+    if(req.session.currentUser){
+        next()
+    } else {
+        res.redirect('/user')
+    }
+}
   
-// app.set('view engine', 'ejs')
+app.set('view engine', 'ejs')
 //Importing Controllers
 const seafoodController = require('./controllers/seafood.js')
-const userController = require('./controllers/users.js')
+const authRoutes = require('./controllers/authRoutes.js')
 //MIDLEWRE TO PARSE DATA req.body obj
 app.use(express.urlencoded({ extended: true }))
-// Setingup the cotrollers to be use with app.use
-app.use('/seafoodstore', seafoodController)
-// app.use('/users', userController)
 
 
 const PORT = process.env.PORT || 3000
@@ -44,6 +49,33 @@ const db = mongoose.connection
 db.on('error', (err) => { console.log('ERROR: ' , err)})
 db.on('connected', () => { console.log('mongo connected')})
 db.on('disconnected', () => { console.log('mongo disconnected')})
+
+app.use('/user', authRoutes)
+
+app.use(isAuthenticated)
+
+app.use('/seafoodstore', (req, res, next) => {
+    next()
+}, seafoodController)
+
+app.get('/any', (req, res) => {
+    req.session.anyProperty = 'something'
+    res.redirect('/seafoodstore')
+})
+app.get('/retrieve', (req, res) => {
+    if(req.session.anyProperty === 'something'){
+        console.log('it is a match!')
+    } else {
+        console.log('it is not a match!')
+    }
+    res.redirect('/seafoodstore')
+})
+app.get('/updateSession', (req, res) => {
+    req.session.anyProperty = 'not something'
+    res.redirect('/seafoodstore')
+})
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is listening on PORT: ${PORT}`)

@@ -19,7 +19,7 @@ The Seafood Store web application is designed to showcase a variety of seafood p
 
 ### Approach
 
-I started by creating all the folder structure necesary for the project then create all the .js, .ejs and css that I needed to start then. After that created some base route and make sure they worked, then seed the db and create a loop the render a list of products on my index route.
+I started by creating all the folder structure necesary for the project then create all the .js, .ejs and css that I needed to start them. After that created some base route and make sure they worked, then seed the db and create a loop the render a list of products on my index route.
 After that was done and working started workinng on my show route and step by step builded a full restfull web app.
 
 ### User Stories
