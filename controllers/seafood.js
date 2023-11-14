@@ -1,5 +1,12 @@
 const express = require('express')
 const router = express.Router()
+const isAuthenticated = (req, res, next) => {
+    if(req.session.currentUser){
+        next()
+    } else {
+        res.redirect('/user')
+    }
+}
 //Requiring the fish model
 const Seafoods = require('../models/seafood.js')
 // const updateController = require('./postRoute.js');
@@ -12,7 +19,7 @@ const Seafoods = require('../models/seafood.js')
 // })
 
 // INDEX ROUTE (OWNER)
-router.get('/', async (req, res)=>{
+router.get('/',isAuthenticated, async (req, res)=>{
     const foundSeafood = await Seafoods.find({})
     // console.log(foundSeafood)
     res.render('index.ejs', {
@@ -29,21 +36,8 @@ router.get('/stock', async (req, res)=>{
     });
 });
 
-//Edit for post menu
-// router.get('/postmenu', async (req, res) => {
-//     try{
-//         const foundSeafood = await Seafoods.find({})
-//         res.render('postmenu.ejs', {
-//             products: foundSeafood
-//         })
-//     }catch (err) {
-//         console.log(err)
-//         res.status(500).send(err)
-//     }
-// })
-
 //NEW ROUTE "creates new product"
-router.get('/new', (req, res) => {
+router.get('/new', isAuthenticated, (req, res) => {
     res.render('new.ejs')
 })
 
@@ -57,7 +51,7 @@ router.get('/stock/:id', async (req, res) => {
 })
 
 //SHOW ROUTE (OWNER)
-router.get('/:id', async (req, res) => {
+router.get('/:id', isAuthenticated, async (req, res) => {
     const foundSeafood = await Seafoods.findById(req.params.id)
     // console.log(foundSeafood)
     res.render('show.ejs', {
@@ -66,7 +60,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // EDIT ROUTE to render "edit.ejs" 
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit',isAuthenticated, async (req, res) => {
     const oundSeafood = await Seafoods.findById(req.params.id)
     console.log(oundSeafood)
     res.render('edit.ejs', {

@@ -45,7 +45,7 @@ After that was done and working started workinng on my show route and step by st
 The application is hosted on Heroku at: 
 -Owner side: https://floating-chamber-37367-77b015f14394.herokuapp.com/seafoodstore
 
-Clients side: https://floating-chamber-37367-77b015f14394.herokuapp.com/seafoodstore/stock
+Clients side: https://deadlinemngt.netlify.app/vehiclek
 
 ## Getting Started
 
@@ -56,5 +56,5 @@ To run the application locally, follow these steps:
 3.  Set up a MongoDB database and update the connection string in your `.env` file.
 4.  Start the server using `npm start`.
 
-## Author
+## Authors
 Alex Rodriguez

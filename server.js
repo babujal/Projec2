@@ -26,11 +26,11 @@ const isAuthenticated = (req, res, next) => {
         res.redirect('/user')
     }
 }
-  
-app.set('view engine', 'ejs')
+
 //Importing Controllers
 const seafoodController = require('./controllers/seafood.js')
 const authRoutes = require('./controllers/authRoutes.js')
+const clientRoute = require('./controllers/clinetRoute.js')
 //MIDLEWRE TO PARSE DATA req.body obj
 app.use(express.urlencoded({ extended: true }))
 
@@ -50,9 +50,9 @@ db.on('error', (err) => { console.log('ERROR: ' , err)})
 db.on('connected', () => { console.log('mongo connected')})
 db.on('disconnected', () => { console.log('mongo disconnected')})
 
-app.use('/user', authRoutes)
+app.use('/client', clientRoute)
 
-app.use(isAuthenticated)
+app.use('/user', authRoutes)
 
 app.use('/seafoodstore', (req, res, next) => {
     next()
