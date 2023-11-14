@@ -12,21 +12,21 @@
                                 <h6 class="text-center"><%= seaFoods[i].name %></h6>
                                 <h5 class="text-center">
                                 <% if (seaFoods[i].aviability === true) { %>
-                                        <h5 class="text-center">Price: $<%= seaFoods[i].price %> lb</h5>
+                                        <h5 class="text-center">Precio: $<%= seaFoods[i].price %> lb</h5>
                                     <% } else { %>
-                                        <h5 class="out">OUT OF STOCK</h5>
+                                        <h5 class="out">AGOTADO</h5>
                                     <% } %>
                                 </h5>
                                 <a href="/seafoodstore/<%= seaFoods[i]._id %>/edit" class="newPage">
                                     <button type="button" class="btn btn-success">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen-fill" viewBox="0 0 16 16">
                                         <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001z"/>
-                                        </svg> EDIT
+                                        </svg> EDITAR
                                     </button>
                                 </a>
                             </div>
                             <div class="card-footer text-white bg-info">
-                                ON SALE
+                                EN VENTA
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                 <% if (seaFoods[i].aviability === true) { %>
                                         <h5 class="text-center">Price: $<%= seaFoods[i].price %> lb</h5>
                                     <% } else { %>
-                                        <h5 class="out">OUT OF STOCK</h5>
+                                        <h5 class="out">AGOTADO</h5>
                                     <% } %>
                                 </h5>
                                 <a href="/seafoodstore/<%= seaFoods[i]._id %>/edit" class="newPage">
